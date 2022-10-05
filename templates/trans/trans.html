@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+    {% block con %}
+    <h1>번역기</h1>
+    <form method="post">
+    {% csrf_token %}
+    <div class="row mt-5">
+        <div class="col-sm-5">
+            <textarea placeholder="번역할 내용 입력(언어 자동 감지)" name="inputtxt" class="form-control" style="height: 200px;"></textarea>
+        </div>
+    
+        <div class="col-sm-2 text-center" style="margin: auto;">
+                <h5>번역할 언어:</h5>
+                <select class="form-select" name="sel">
+                    {% for i in lnset %}
+                    <option value="{{i}}">{{i}}</option>
+                    {% endfor %}
+                </select>
+                <button class="mt-3 mb-3 btn btn-dark">번역</button>
+        </div>
+        
+        <div class="col-sm-5">
+            {% if transed != null %}
+            <textarea name="transedtxt" disabled class="form-control" style="height: 200px;">{{transed.text}}</textarea>
+            {% else %}
+            <textarea name="transedtxt" disabled class="form-control" style="height: 200px;" placeholder="이곳에 번역됩니다."></textarea>
+            {% endif %}
+        </div> 
+        
+    </div>
+    </form>
+    
+    <script>
+        function check(){
+            tf=document.transForm;
+            if(!txt.value){
+                alert("번역할 문장을 입력해주세요")
+            }else{
+                tf.submit();
+            }
+        }
+
+    </script>
+
+    {% endblock %}

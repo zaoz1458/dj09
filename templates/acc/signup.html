@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block con %} 
+    <h1><b>회원가입</b></h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3 mt-5">
+            <label class="form-label">USERNAME</label>
+            <input type="text" class="form-control" name="id">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">PASSWORD</label>
+            <input type="password" class="form-control" name="pwd">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">COMMENT</label>
+            <textarea class="form-control" name="desc"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">USERPIC</label>
+            <input type="file" class="form-control" name="pic">
+        </div>
+        <div class="mt-4 text-end">
+            <button class="btn btn-dark" style="font-weight: bold;">회원가입</button> 
+        </div>
+    </form>
+{% endblock %}
